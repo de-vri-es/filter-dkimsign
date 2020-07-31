@@ -28,6 +28,9 @@
 #include <unistd.h>
 
 #include "opensmtpd.h"
+#ifdef NEED_OPENBSD_COMPAT
+#  include "openbsd-compat.h"
+#endif
 
 struct dkim_signature {
 	char *signature;
