@@ -187,8 +187,10 @@ main(int argc, char *argv[])
 	if ((hash_md = EVP_get_digestbyname(hashalg)) == NULL)
 		osmtpd_errx(1, "Can't find hash: %s", hashalg);
 
+#ifndef NO_PLEDGE
 	if (pledge("tmppath stdio", NULL) == -1)
 		osmtpd_err(1, "pledge");
+#endif
 
 	if (domain == NULL || selector == NULL || pkey == NULL)
 		usage();
